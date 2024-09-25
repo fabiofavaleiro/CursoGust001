@@ -1,3 +1,4 @@
+import classes.Materia;
 import classes.Pessoa;
 
 import javax.swing.*;
@@ -15,10 +16,27 @@ pessoa1.setId(1);
 pessoa1.setNome(nome);
 pessoa1.setcPF(cPF);
 pessoa1.setIdade(Integer.valueOf(idade));
-pessoa1.getMateria().setNota1( Double.parseDouble(JOptionPane.showInputDialog("Nota 1?")));
-pessoa1.getMateria().setNota2( Double.parseDouble(JOptionPane.showInputDialog("Nota 2?")));
-pessoa1.getMateria().setNota3( Double.parseDouble(JOptionPane.showInputDialog("Nota 3?")));
-pessoa1.getMateria().setNota4( Double.parseDouble(JOptionPane.showInputDialog("Nota 4?")));
+
+        Materia materia1 = new Materia();
+        materia1.setMateria("banco de dados");
+        materia1.setNota(9);
+        pessoa1.getMaterias().add(materia1);
+
+        Materia materia2 = new Materia();
+        materia2.setMateria("Matematica");
+        materia2.setNota(10);
+        pessoa1.getMaterias().add(materia2);
+
+        Materia materia3 = new Materia();
+        materia3.setMateria("Estrutura de dados");
+        materia3.setNota(10);
+        pessoa1.getMaterias().add(materia3);
+
+        Materia materia4 = new Materia();
+        materia4.setMateria("Java");
+        materia4.setNota(10);
+        pessoa1.getMaterias().add(materia4);
+
 
 System.out.println("O ID é " + pessoa1.getId());
 System.out.println("O Nome é " + pessoa1.getNome());

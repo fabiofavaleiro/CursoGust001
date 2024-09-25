@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Pessoa {
@@ -8,14 +10,21 @@ public class Pessoa {
     int idade;
     String cPF;
 
-    Materia materia = new Materia();
+    List <Materia> materias = new ArrayList<Materia>();
 
 
 
     public Pessoa () {    }
 
     public double mediaNotas(){
-        return (materia.getNota1() + materia.getNota2() + materia.getNota3() + materia.getNota4()) / 4;
+
+        double somaNotas = 0.0;
+
+        for (Materia materia : materias) {
+            somaNotas +=  materia.getNota();
+        }
+
+        return somaNotas/ materias.size();
     }
 
     public boolean getAprovado(){
@@ -36,35 +45,19 @@ public class Pessoa {
                 ", nome='" + nome + '\'' +
                 ", idade=" + idade +
                 ", cPF='" + cPF + '\'' +
-                ", materia=" + materia +
+                ", materias=" + materias +
                 '}';
     }
 
-    //Getters and Setters
+//Getters and Setters
     /*=================================================================================*/
 
-    public Materia getMateria() {
-        return materia;
+    public int getId() {
+        return id;
     }
 
-    public void setMateria(Materia materia) {
-        this.materia = materia;
-    }
-
-    public String getcPF() {
-        return cPF;
-    }
-
-    public void setcPF(String cPF) {
-        this.cPF = cPF;
-    }
-
-    public int getIdade() {
-        return idade;
-    }
-
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -75,13 +68,27 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public int getId() {
-        return id;
+    public int getIdade() {
+        return idade;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdade(int idade) {
+        this.idade = idade;
     }
 
+    public String getcPF() {
+        return cPF;
+    }
 
+    public void setcPF(String cPF) {
+        this.cPF = cPF;
+    }
+
+    public List<Materia> getMaterias() {
+        return materias;
+    }
+
+    public void setMaterias(List<Materia> materia) {
+        this.materias = materia;
+    }
 }
