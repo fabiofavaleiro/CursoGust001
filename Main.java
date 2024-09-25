@@ -15,10 +15,10 @@ pessoa1.setId(1);
 pessoa1.setNome(nome);
 pessoa1.setcPF(cPF);
 pessoa1.setIdade(Integer.valueOf(idade));
-pessoa1.getMateria().setN1( Double.parseDouble(JOptionPane.showInputDialog("Nota 1?")));
-pessoa1.getMateria().setN2( Double.parseDouble(JOptionPane.showInputDialog("Nota 2?")));
-pessoa1.getMateria().setN3( Double.parseDouble(JOptionPane.showInputDialog("Nota 3?")));
-pessoa1.getMateria().setN4( Double.parseDouble(JOptionPane.showInputDialog("Nota 4?")));
+pessoa1.getMateria().setNota1( Double.parseDouble(JOptionPane.showInputDialog("Nota 1?")));
+pessoa1.getMateria().setNota2( Double.parseDouble(JOptionPane.showInputDialog("Nota 2?")));
+pessoa1.getMateria().setNota3( Double.parseDouble(JOptionPane.showInputDialog("Nota 3?")));
+pessoa1.getMateria().setNota4( Double.parseDouble(JOptionPane.showInputDialog("Nota 4?")));
 
 System.out.println("o ID é " + pessoa1.getId());
 System.out.println("o Nome é " + pessoa1.getNome());

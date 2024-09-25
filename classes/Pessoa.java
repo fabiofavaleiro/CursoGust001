@@ -15,7 +15,7 @@ public class Pessoa {
     public Pessoa () {    }
 
     public double mediaNotas(){
-        return (materia.getN1() + materia.getN2() + materia.getN3() + materia.getN4()) / 4;
+        return (materia.getNota1() + materia.getNota2() + materia.getNota3() + materia.getNota4()) / 4;
     }
 
     public boolean getAprovado(){
@@ -28,6 +28,7 @@ public class Pessoa {
 
     //to String
     /*=================================================================================*/
+
     @Override
     public String toString() {
         return "Pessoa{" +
