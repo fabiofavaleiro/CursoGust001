@@ -41,7 +41,7 @@ public class Main {
             }
 
 
-            int escolha = JOptionPane.showConfirmDialog(null, "Deseja removerl alguma diciplina?");
+            int escolha = JOptionPane.showConfirmDialog(null, "Deseja remover alguma diciplina?");
 
             while (escolha == 0) {
 
@@ -53,25 +53,64 @@ public class Main {
             pessoas.add(pessoa1);
         }
 
-        for (Pessoa pessoa : pessoas) {
-
-            System.out.println("O ID é " + pessoa.getId());
-            System.out.println("O Nome é " + pessoa.getNome());
-            System.out.println("A idade é " + pessoa.getIdade());
-            System.out.println("O CPF é " + pessoa.getcPF());
-            System.out.println("A media dele é " + pessoa.mediaNotas());
-            System.out.println("Sr(a). "+ pessoa.getNome()+" está " + (pessoa.getAprovado()? "apovado(a)" : "reprovado(a)"));
 
 
-            System.out.println(pessoa.getMaterias());
-            System.out.println(pessoa);
-            System.out.println("==========================================================================");
+       /* for (Pessoa pessoa : pessoas) {
+
+            String removePessoa = JOptionPane.showInputDialog("quem vc quer remover da lista?");
+
+            if(pessoa.getNome().equalsIgnoreCase(removePessoa)){
+
+                pessoas.remove(pessoa);
+
+                //System.out.println("O ID é " + pessoa.getId());
+               //System.out.println("O Nome é " + pessoa.getNome());
+                //System.out.println("A idade é " + pessoa.getIdade());
+                //System.out.println("O CPF é " + pessoa.getcPF());
+                //System.out.println("A media dele é " + pessoa.mediaNotas());
+                //System.out.println("Sr(a). "+ pessoa.getNome()+" está " + (pessoa.getAprovado()? "apovado(a)" : "reprovado(a)"));
+
+                //System.out.println(pessoa.getMaterias());
+                //System.out.println(pessoa);
+                //System.out.println("==========================================================================");
+                //break;
+
+            }
+
 
         }
-        
+
+        for(Pessoa pessoa : pessoas){
+            System.out.println("os aluno que sobraram foram:");
+            System.out.println(pessoa.getNome());
+            System.out.println("suas materias são:");
+
+            for (Materia materia : pessoa.getMaterias());
+            {
+
+                System.out.println(pessoa.getMaterias());
+            }
+
+        }*/
+
+        for (int pos = 0; pos < pessoas.size(); pos++) {
+
+            Pessoa pessoa = pessoas.get(pos);
+
+            System.out.println("Aluno:" + pessoa.getNome());
+            System.out.println("Media do aluno:"+pessoa.getMedia());
+            System.out.println("Resultado:"+ (pessoa.getAprovado()? "Aprovado":"Reprovado"));
+
+            for(Materia materia: pessoa.getMaterias()){
+                System.out.println("Materia: " +materia.getMaretia()+" nota: "+materia.getNota());
+            }
 
 
 
+        }
+
+
+       
 
     }
 }

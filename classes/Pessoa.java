@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Pessoa {
-    int id;
-    String nome;
-    int idade;
-    String cPF;
+    private int id;
+    private String nome;
+    private int idade;
+    private String cPF;
+    private double media;
 
     List <Materia> materias = new ArrayList<Materia>();
 
@@ -23,8 +24,9 @@ public class Pessoa {
         for (Materia materia : materias) {
             somaNotas +=  materia.getNota();
         }
+        media = somaNotas/ materias.size();
+        return media;
 
-        return somaNotas/ materias.size();
     }
 
     public boolean getAprovado(){
@@ -52,6 +54,14 @@ public class Pessoa {
 
 //Getters and Setters
     /*=================================================================================*/
+
+    public double getMedia() {
+        return media;
+    }
+
+    public void setMedia(double media) {
+        this.media = media;
+    }
 
     public int getId() {
         return id;
