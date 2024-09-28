@@ -99,7 +99,7 @@ public class Main {
 
             System.out.println("Aluno:" + pessoa.getNome());
             System.out.println("Media do aluno:"+pessoa.getMedia());
-            System.out.println("Resultado:"+ (pessoa.getAprovado()? "Aprovado":"Reprovado"));
+            System.out.println("Resultado: "+ (pessoa.getAprovado()? "Aprovado":"Reprovado"));
 
             for(Materia materia: pessoa.getMaterias()){
                 System.out.println("Materia: " +materia.getMaretia()+" nota: "+materia.getNota());
