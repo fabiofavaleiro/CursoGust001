@@ -4,87 +4,98 @@ import classes.StatusPessoa;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        List<Pessoa> pessoas = new  ArrayList<Pessoa>();
 
-        List<Pessoa> pessoasAprovadas = new  ArrayList<Pessoa>();
-        List<Pessoa> pessoasExame = new  ArrayList<Pessoa>();
-        List<Pessoa> pessoasReprovadas = new  ArrayList<Pessoa>();
+        String login = JOptionPane.showInputDialog("Qual é seu login?");
+        String senha = JOptionPane.showInputDialog("Qual é seu senha?");
 
-
-
-        int numeroPessoas = Integer.valueOf(JOptionPane.showInputDialog("São quantas pessoas matriculadas?"));
-
-        for (int quantidadeAlunos = 1; quantidadeAlunos <= numeroPessoas; quantidadeAlunos++) {
+        if(login.equals("Admin") && senha.equals("Admin")) {
 
 
-            String nome = JOptionPane.showInputDialog("Qual é o nome do caboclo "+quantidadeAlunos+"?");
-            //String idade = JOptionPane.showInputDialog("Qual é a idade do " + nome + "?");
-            //String cPF = JOptionPane.showInputDialog("Qual é o CPF do " + nome + "?");
+            List<Pessoa> pessoas = new ArrayList<Pessoa>();
 
-            Pessoa pessoa1 = new Pessoa();
+            HashMap<String, List<Pessoa>> maps = new HashMap<String, List<Pessoa>>();
+
+            List<Pessoa> pessoasAprovadas = new ArrayList<Pessoa>();
+            List<Pessoa> pessoasExame = new ArrayList<Pessoa>();
+            List<Pessoa> pessoasReprovadas = new ArrayList<Pessoa>();
 
 
-            pessoa1.setId(quantidadeAlunos);
-            pessoa1.setNome(nome);
-            //pessoa1.setcPF(cPF);
-            //pessoa1.setIdade(Integer.valueOf(idade));
+            int numeroPessoas = Integer.valueOf(JOptionPane.showInputDialog("São quantas pessoas matriculadas?"));
 
-            int quantidadeMaterias = Integer.valueOf(JOptionPane.showInputDialog("Ow shiiiiu!!! Quantas materias o " + nome + " tem?"));
+            for (int quantidadeAlunos = 1; quantidadeAlunos <= numeroPessoas; quantidadeAlunos++) {
 
-            for (int pos = 1; pos <= quantidadeMaterias; pos++) {
-                String materiaName = JOptionPane.showInputDialog("Qual o nome da materia " + pos + " ?");
-                String materialNote = JOptionPane.showInputDialog("Qual é a nota da materia " + materiaName + " ?");
 
-                Materia materia = new Materia();
-                materia.setMateria(materiaName);
-                materia.setNota(Double.valueOf(materialNote));
+                String nome = JOptionPane.showInputDialog("Qual é o nome do caboclo " + quantidadeAlunos + "?");
+                //String idade = JOptionPane.showInputDialog("Qual é a idade do " + nome + "?");
+                //String cPF = JOptionPane.showInputDialog("Qual é o CPF do " + nome + "?");
 
-                pessoa1.getMaterias().add(materia);
+                Pessoa pessoa1 = new Pessoa();
+
+
+                pessoa1.setId(quantidadeAlunos);
+                pessoa1.setNome(nome);
+                //pessoa1.setcPF(cPF);
+                //pessoa1.setIdade(Integer.valueOf(idade));
+
+                int quantidadeMaterias = Integer.valueOf(JOptionPane.showInputDialog("Ow shiiiiu!!! Quantas materias o " + nome + " tem?"));
+
+                for (int pos = 1; pos <= quantidadeMaterias; pos++) {
+                    String materiaName = JOptionPane.showInputDialog("Qual o nome da materia " + pos + " ?");
+                    String materialNote = JOptionPane.showInputDialog("Qual é a nota da materia " + materiaName + " ?");
+
+                    Materia materia = new Materia();
+                    materia.setMateria(materiaName);
+                    materia.setNota(Double.valueOf(materialNote));
+
+                    pessoa1.getMaterias().add(materia);
+
+                }
+
+
+                pessoas.add(pessoa1);
+
+
+            }
+//>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            maps.put(StatusPessoa.APROVADO, new ArrayList<Pessoa>());
+            maps.put(StatusPessoa.EXAME, new ArrayList<Pessoa>());
+            maps.put(StatusPessoa.REPROVADO, new ArrayList<Pessoa>());
+
+
+            for (Pessoa pessoa : pessoas) {
+
+                if (pessoa.getAprovado().equalsIgnoreCase(StatusPessoa.APROVADO)) { //maneira diferente de dizes que o atributo apeocado do objeto pessoa é igal a String StatusPessoa.APROVADO
+                    maps.get(StatusPessoa.APROVADO).add(pessoa);
+                } else if (pessoa.getAprovado().equals(StatusPessoa.EXAME)) {
+                    maps.get(StatusPessoa.EXAME).add(pessoa);
+                } else {
+                    maps.get(StatusPessoa.REPROVADO).add(pessoa);
+                }
 
             }
 
-
-
-
-            pessoas.add(pessoa1);
-
-
-
-        }
-
-        for (Pessoa pessoa:pessoas){
-
-            if(pessoa.getAprovado().equalsIgnoreCase(StatusPessoa.APROVADO)){ //maneira diferente de dizes que o atributo apeocado do objeto pessoa é igal a String StatusPessoa.APROVADO
-            pessoasAprovadas.add(pessoa);
-            } else if (pessoa.getAprovado().equals(StatusPessoa.EXAME)) {
-            pessoasExame.add(pessoa);
-            }else{
-            pessoasReprovadas.add(pessoa);
+            for (Pessoa pessoa : maps.get(StatusPessoa.APROVADO)) {
+                System.out.println(StatusPessoa.APROVADO);
+                System.out.println(pessoa.getNome());
             }
 
-        }
+            for (Pessoa pessoa : maps.get(StatusPessoa.EXAME)) {
+                System.out.println(StatusPessoa.EXAME);
+                System.out.println(pessoa.getNome());
+            }
 
-        for(Pessoa pessoa : pessoasAprovadas){
-            System.out.println(StatusPessoa.APROVADO);
-            System.out.println(pessoa.getNome());
-        }
-
-        for(Pessoa pessoa : pessoasExame){
-            System.out.println(StatusPessoa.EXAME);
-            System.out.println(pessoa.getNome());
-        }
-
-        for(Pessoa pessoa : pessoasReprovadas){
-            System.out.println(StatusPessoa.REPROVADO);
-            System.out.println(pessoa.getNome());
-        }
+            for (Pessoa pessoa : maps.get(StatusPessoa.REPROVADO)) {
+                System.out.println(StatusPessoa.REPROVADO);
+                System.out.println(pessoa.getNome());
+            }
 
 
-
+        } 
        
 
     }
