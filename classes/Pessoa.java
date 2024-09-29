@@ -10,6 +10,7 @@ public class Pessoa {
     private int idade;
     private String cPF;
     private double media;
+    private double somaNotas = 0.0;
 
     List <Materia> materias = new ArrayList<Materia>();
 
@@ -19,7 +20,7 @@ public class Pessoa {
 
     public double mediaNotas(){
 
-        double somaNotas = 0.0;
+
 
         for (Materia materia : materias) {
             somaNotas +=  materia.getNota();
@@ -54,6 +55,14 @@ public class Pessoa {
 
 //Getters and Setters
     /*=================================================================================*/
+
+    public double getSomaNotas() {
+        return somaNotas;
+    }
+
+    public void setSomaNotas(double somaNotas) {
+        this.somaNotas = somaNotas;
+    }
 
     public double getMedia() {
         return media;
