@@ -18,25 +18,35 @@ public class Pessoa {
 
     public Pessoa () {    }
 
+    public double somaNotasM(){
+        double somaNotasDM =0.0;
+
+        for (Materia materia : materias) {
+            somaNotasDM +=  materia.getNota();
+        }
+
+        return  somaNotasDM;
+    }
+
+
     public double mediaNotas(){
 
 
 
-        for (Materia materia : materias) {
-            somaNotas +=  materia.getNota();
-        }
-        media = somaNotas/ materias.size();
+
+        media = somaNotasM()/ materias.size();
+
         return media;
 
     }
 
     public String getAprovado(){
 
-        double media = this.mediaNotas();
 
-            if (media >=7){
+
+            if (mediaNotas() >=7){
                 return StatusPessoa.APROVADO;
-            } else if (media >=5) {
+            } else if (mediaNotas() >=5) {
                 return  StatusPessoa.EXAME;
             }else{
                 return StatusPessoa.REPROVADO;

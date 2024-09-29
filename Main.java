@@ -1,5 +1,6 @@
 import classes.Materia;
 import classes.Pessoa;
+import classes.StatusPessoa;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -9,22 +10,28 @@ public class Main {
     public static void main(String[] args) {
         List<Pessoa> pessoas = new  ArrayList<Pessoa>();
 
+        List<Pessoa> pessoasAprovadas = new  ArrayList<Pessoa>();
+        List<Pessoa> pessoasExame = new  ArrayList<Pessoa>();
+        List<Pessoa> pessoasReprovadas = new  ArrayList<Pessoa>();
+
+
+
         int numeroPessoas = Integer.valueOf(JOptionPane.showInputDialog("São quantas pessoas matriculadas?"));
 
         for (int quantidadeAlunos = 1; quantidadeAlunos <= numeroPessoas; quantidadeAlunos++) {
 
 
             String nome = JOptionPane.showInputDialog("Qual é o nome do caboclo "+quantidadeAlunos+"?");
-            String idade = JOptionPane.showInputDialog("Qual é a idade do " + nome + "?");
-            String cPF = JOptionPane.showInputDialog("Qual é o CPF do " + nome + "?");
+            //String idade = JOptionPane.showInputDialog("Qual é a idade do " + nome + "?");
+            //String cPF = JOptionPane.showInputDialog("Qual é o CPF do " + nome + "?");
 
             Pessoa pessoa1 = new Pessoa();
 
 
             pessoa1.setId(quantidadeAlunos);
             pessoa1.setNome(nome);
-            pessoa1.setcPF(cPF);
-            pessoa1.setIdade(Integer.valueOf(idade));
+            //pessoa1.setcPF(cPF);
+            //pessoa1.setIdade(Integer.valueOf(idade));
 
             int quantidadeMaterias = Integer.valueOf(JOptionPane.showInputDialog("Ow shiiiiu!!! Quantas materias o " + nome + " tem?"));
 
@@ -42,22 +49,46 @@ public class Main {
 
 
 
+
             pessoas.add(pessoa1);
 
-            mostra1(pessoas);
+
 
         }
 
+        for (Pessoa pessoa:pessoas){
 
+            if(pessoa.getAprovado().equalsIgnoreCase(StatusPessoa.APROVADO)){ //maneira diferente de dizes que o atributo apeocado do objeto pessoa é igal a String StatusPessoa.APROVADO
+            pessoasAprovadas.add(pessoa);
+            } else if (pessoa.getAprovado().equals(StatusPessoa.EXAME)) {
+            pessoasExame.add(pessoa);
+            }else{
+            pessoasReprovadas.add(pessoa);
+            }
 
+        }
 
+        for(Pessoa pessoa : pessoasAprovadas){
+            System.out.println(StatusPessoa.APROVADO);
+            System.out.println(pessoa.getNome());
+        }
 
+        for(Pessoa pessoa : pessoasExame){
+            System.out.println(StatusPessoa.EXAME);
+            System.out.println(pessoa.getNome());
+        }
+
+        for(Pessoa pessoa : pessoasReprovadas){
+            System.out.println(StatusPessoa.REPROVADO);
+            System.out.println(pessoa.getNome());
+        }
 
 
 
        
 
     }
+
 
     public static void mostra1(List<Pessoa> pessoas){
 
