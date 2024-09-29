@@ -87,7 +87,7 @@ public class Main {
 
             System.out.println("Aluno:" + pessoa.getNome());
             System.out.println("Media do aluno:"+pessoa.mediaNotas());
-            System.out.println("Resultado: "+ (pessoa.getAprovado()? "Aprovado":"Reprovado"));
+            System.out.println("Resultado: "+ pessoa.getAprovado());
 
 
 
@@ -126,7 +126,7 @@ public class Main {
                 System.out.println("A idade é " + pessoa.getIdade());
                 System.out.println("O CPF é " + pessoa.getcPF());
                 System.out.println("A media dele é " + pessoa.mediaNotas());
-                System.out.println("Sr(a). "+ pessoa.getNome()+" está " + (pessoa.getAprovado()? "apovado(a)" : "reprovado(a)"));
+                System.out.println("Sr(a). "+ pessoa.getNome()+" está " + pessoa.getAprovado());
 
                 System.out.println(pessoa.getMaterias());
                 System.out.println(pessoa);

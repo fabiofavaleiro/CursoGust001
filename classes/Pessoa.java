@@ -30,11 +30,17 @@ public class Pessoa {
 
     }
 
-    public boolean getAprovado(){
+    public String getAprovado(){
 
         double media = this.mediaNotas();
 
-            return media >=7;
+            if (media >=7){
+                return StatusPessoa.APROVADO;
+            } else if (media >=5) {
+                return  StatusPessoa.EXAME;
+            }else{
+                return StatusPessoa.REPROVADO;
+            }
 
     }
 
